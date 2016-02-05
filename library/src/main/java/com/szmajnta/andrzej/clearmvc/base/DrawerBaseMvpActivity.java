@@ -6,26 +6,24 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.view.MenuItem;
 import android.view.ViewStub;
 
-
 import com.szmajnta.andrzej.clearmvc.R;
-
-import butterknife.Bind;
 
 /**
  * Created by andrzej on 05.02.2016.
  */
 public abstract class DrawerBaseMvpActivity<V extends Presenter> extends BaseMvpActivity<V> implements NavigationView.OnNavigationItemSelectedListener {
-    @Bind(R.id.drawer)
     protected DrawerLayout drawerLayout;
-    @Bind(R.id.navigation_view)
     protected NavigationView navigationView;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        drawerLayout = (DrawerLayout)findViewById(R.id.clearmvp_drawer_layout);
+        navigationView = (NavigationView)findViewById(R.id.clearmvp_navigation_view);
+
         setupDrawer();
     }
 
@@ -39,12 +37,14 @@ public abstract class DrawerBaseMvpActivity<V extends Presenter> extends BaseMvp
 
     private void setupDrawer() {
         ActionBarDrawerToggle drawerToggle = new ActionBarDrawerToggle(this, drawerLayout,
-                null, R.string.open, R.string.close);
+                null, R.string.clearmvp_open
+                , R.string.clearmvp_close);
 
         drawerLayout.setDrawerListener(drawerToggle);
         drawerToggle.syncState();
 
         navigationView.setNavigationItemSelectedListener(this);
+        navigationView.inflateMenu(getMenu());
     }
 
     protected void closeDrawer(){
@@ -55,20 +55,11 @@ public abstract class DrawerBaseMvpActivity<V extends Presenter> extends BaseMvp
         drawerLayout.openDrawer(GravityCompat.START);
     }
 
-
-    @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
-        closeDrawer();
-        int id = item.getItemId();
-
-        switch (id) {
-            case R.id.logout:
-                break;
-        }
-        return true;
+    protected int getDefaultBaseLayout(){
+        return R.layout.clearmvp_drawer_activity;
     }
 
-    protected int getDefaultBaseLayout(){
-        return R.layout.drawer_activity;
+    protected int getMenu(){
+        return R.menu.clearmvp_drawer_menu;
     }
 }

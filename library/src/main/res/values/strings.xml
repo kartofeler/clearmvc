@@ -1,5 +1,4 @@
 <resources>
-    <string name="app_name">Runspy</string>
-    <string name="close">Close</string>
-    <string name="open">Open</string>
+    <string name="clearmvp_close">Close</string>
+    <string name="clearmvp_open">Open</string>
 </resources>

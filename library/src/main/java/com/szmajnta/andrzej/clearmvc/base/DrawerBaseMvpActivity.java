@@ -5,7 +5,6 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.view.ViewStub;
 
 import com.szmajnta.andrzej.clearmvc.R;
@@ -36,15 +35,8 @@ public abstract class DrawerBaseMvpActivity<V extends Presenter> extends BaseMvp
     }
 
     private void setupDrawer() {
-        ActionBarDrawerToggle drawerToggle = new ActionBarDrawerToggle(this, drawerLayout,
-                null, R.string.clearmvp_open
-                , R.string.clearmvp_close);
-
-        drawerLayout.setDrawerListener(drawerToggle);
-        drawerToggle.syncState();
-
-        navigationView.setNavigationItemSelectedListener(this);
         navigationView.inflateMenu(getMenu());
+        navigationView.setNavigationItemSelectedListener(this);
 
         navigationView.getHeaderView(0);
     }

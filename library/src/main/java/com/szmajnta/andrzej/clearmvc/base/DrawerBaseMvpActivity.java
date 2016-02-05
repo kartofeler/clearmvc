@@ -45,6 +45,8 @@ public abstract class DrawerBaseMvpActivity<V extends Presenter> extends BaseMvp
 
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.inflateMenu(getMenu());
+
+        navigationView.getHeaderView(0);
     }
 
     protected void closeDrawer(){

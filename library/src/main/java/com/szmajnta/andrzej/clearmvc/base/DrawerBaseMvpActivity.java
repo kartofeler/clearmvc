@@ -12,18 +12,19 @@ import com.szmajnta.andrzej.clearmvc.R;
  */
 public abstract class DrawerBaseMvpActivity<V extends Presenter> extends BaseMvpActivity<V> implements NavigationView.OnNavigationItemSelectedListener {
 
+
     protected DrawerLayout drawerLayout;
     protected NavigationView navigationView;
 
     @Override
     protected final void createLayout() {
         super.setContentView(getDefaultBaseLayout());
-        ViewStub stub = (ViewStub)findViewById(R.id.contentStub);
+        ViewStub stub = (ViewStub) findViewById(R.id.contentStub);
         stub.setLayoutResource(getContentView());
         stub.inflate();
 
-        drawerLayout = (DrawerLayout)findViewById(R.id.clearmvp_drawer_layout);
-        navigationView = (NavigationView)findViewById(R.id.clearmvp_navigation_view);
+        drawerLayout = (DrawerLayout) findViewById(R.id.clearmvp_drawer_layout);
+        navigationView = (NavigationView) findViewById(R.id.clearmvp_navigation_view);
         setupDrawer();
     }
 
@@ -32,27 +33,26 @@ public abstract class DrawerBaseMvpActivity<V extends Presenter> extends BaseMvp
         navigationView.inflateMenu(getMenu());
 
         navigationView.setNavigationItemSelectedListener(this);
-
         navigationView.getHeaderView(0);
     }
 
-    protected void closeDrawer(){
+    protected void closeDrawer() {
         drawerLayout.closeDrawer(GravityCompat.START);
     }
 
-    protected void openDrawer(){
+    protected void openDrawer() {
         drawerLayout.openDrawer(GravityCompat.START);
     }
 
-    protected int getDefaultBaseLayout(){
+    protected int getDefaultBaseLayout() {
         return R.layout.clearmvp_drawer_activity;
     }
 
-    protected int getDefaultHeaderLayout(){
+    protected int getDefaultHeaderLayout() {
         return R.layout.clearmvp_drawer_header;
     }
 
-    protected int getMenu(){
+    protected int getMenu() {
         return R.menu.clearmvp_drawer_menu;
     }
 }

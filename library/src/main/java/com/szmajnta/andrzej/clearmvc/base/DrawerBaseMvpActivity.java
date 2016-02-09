@@ -17,7 +17,7 @@ public abstract class DrawerBaseMvpActivity<V extends Presenter> extends BaseMvp
 
     @Override
     protected final void createLayout() {
-        setContentView(getDefaultBaseLayout());
+        super.setContentView(getDefaultBaseLayout());
         ViewStub stub = (ViewStub)findViewById(R.id.contentStub);
         stub.setLayoutResource(getContentView());
         stub.inflate();

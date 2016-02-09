@@ -13,6 +13,7 @@ import com.szmajnta.andrzej.clearmvc.R;
  * Created by andrzej on 05.02.2016.
  */
 public abstract class DrawerBaseMvpActivity<V extends Presenter> extends BaseMvpActivity<V> implements NavigationView.OnNavigationItemSelectedListener {
+
     protected DrawerLayout drawerLayout;
     protected NavigationView navigationView;
 
@@ -35,7 +36,9 @@ public abstract class DrawerBaseMvpActivity<V extends Presenter> extends BaseMvp
     }
 
     private void setupDrawer() {
+        navigationView.inflateHeaderView(getDefaultHeaderLayout());
         navigationView.inflateMenu(getMenu());
+
         navigationView.setNavigationItemSelectedListener(this);
 
         navigationView.getHeaderView(0);
@@ -51,6 +54,10 @@ public abstract class DrawerBaseMvpActivity<V extends Presenter> extends BaseMvp
 
     protected int getDefaultBaseLayout(){
         return R.layout.clearmvp_drawer_activity;
+    }
+
+    protected int getDefaultHeaderLayout(){
+        return R.layout.clearmvp_drawer_header;
     }
 
     protected int getMenu(){

@@ -1,7 +1,5 @@
 package com.szmajnta.andrzej.clearmvc.base;
 
-import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -18,19 +16,15 @@ public abstract class DrawerBaseMvpActivity<V extends Presenter> extends BaseMvp
     protected NavigationView navigationView;
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        drawerLayout = (DrawerLayout)findViewById(R.id.clearmvp_drawer_layout);
-        navigationView = (NavigationView)findViewById(R.id.clearmvp_navigation_view);
-        setupDrawer();
-    }
-
-    @Override
     protected final void createLayout() {
         setContentView(getDefaultBaseLayout());
         ViewStub stub = (ViewStub)findViewById(R.id.contentStub);
         stub.setLayoutResource(getContentView());
         stub.inflate();
+
+        drawerLayout = (DrawerLayout)findViewById(R.id.clearmvp_drawer_layout);
+        navigationView = (NavigationView)findViewById(R.id.clearmvp_navigation_view);
+        setupDrawer();
     }
 
     private void setupDrawer() {

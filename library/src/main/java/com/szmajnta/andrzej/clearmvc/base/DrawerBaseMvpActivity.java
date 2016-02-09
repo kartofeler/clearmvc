@@ -19,10 +19,10 @@ public abstract class DrawerBaseMvpActivity<V extends Presenter> extends BaseMvp
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         drawerLayout = (DrawerLayout)findViewById(R.id.clearmvp_drawer_layout);
         navigationView = (NavigationView)findViewById(R.id.clearmvp_navigation_view);
         setupDrawer();
-        super.onCreate(savedInstanceState);
     }
 
     @Override
